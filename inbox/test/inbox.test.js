@@ -27,11 +27,13 @@ describe('Inbox', () => {
 
   it('has a default message', async () => {
     const message = await inbox.methods.message().call();
+    // call is instancely
     assert.equal(message, initialMessage)
   })
   
   it('can setMessage', async () => {
     await inbox.methods.setMessage('Hi, new Andy').send({ from: accounts[0] });
+    // send is not instancely
     const message = await inbox.methods.message().call();
     assert.equal(message, 'Hi, new Andy')
   })
