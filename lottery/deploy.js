@@ -14,12 +14,13 @@ const web3 = new Web3(provider);
 const deploy = async () => {
   const accounts = await web3.eth.getAccounts();
 
-  console.log('accounts', accounts)
+  console.log('accounts', accounts);
 
   const deployed = await new web3.eth.Contract(JSON.parse(interfacee))
     .deploy({ data: bytecode })
     .send({ from: accounts[0], gas: '1000000' });
-
+  
+    console.log('interfacee', interfacee);
   console.log('contract address', deployed.options.address);
 
 }

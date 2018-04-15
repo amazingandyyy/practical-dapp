@@ -9,16 +9,11 @@ contract Lottery {
         _;
     }
     
-    modifier isNotManager(){
-        require(!(msg.sender == manager));
-        _;
-    }
-    
     function Lottery() public {
         manager = msg.sender;
     }
     
-    function enter() isNotManager() public payable {
+    function enter() public payable {
         require(msg.value > .01 ether);
         players.push(msg.sender);
     }
@@ -36,4 +31,4 @@ contract Lottery {
     function getPlayers() public view returns (address[]) {
         return players;
     }
-}
+ }

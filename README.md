@@ -33,7 +33,7 @@
 ```javascript
 const web3 = new Web3(provider);
 web3.utils.toWei('0.01', 'ether');
-await web3.eth.getBalance(accounts[0]);
+let someoneBalance = await web3.eth.getBalance(accounts[0]);
 ```
 
 ### Global Variables
