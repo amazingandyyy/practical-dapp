@@ -54,6 +54,13 @@ let someoneBalance = await web3.eth.getBalance(accounts[0]);
 - sha3, keccak256
 - address.transfer()
 
+## Default value
+
+- string to ""(empty string)
+- bool to false
+- uint to 0
+- msg.value are in wei
+
 ## Resource
 
 [Ethereum and Solidity: The Complete Developer's Guide](https://www.udemy.com/ethereum-and-solidity-the-complete-developers-guide/learn/v4/)
