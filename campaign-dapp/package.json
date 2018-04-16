@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --watch"
+    "test": "mocha --watch",
+    "dev": "next dev",
+    "build:contract": "node ./contract/compile.js",
+    "deploy:contract": "node ./contract/deploy.js"
   },
   "author": "Amazingandyyy <amazingandyyy@gmail.com> (Andy Chen)",
   "license": "MIT",
