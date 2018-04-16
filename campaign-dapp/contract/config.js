@@ -1,6 +1,4 @@
-require('dotenv').config();
-
-module.export = {
-  address: '0xf260F0a7e2F2Bd15f976032832ddbDb43B0dA47d',
+export default {
+  address: '0x8112FB6F608CdCC62b51EB5d4496ab2c2afa4cB1',
   mnemonic: process.env.mnemonic
 }
