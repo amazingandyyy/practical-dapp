@@ -19,7 +19,7 @@ contract Lottery {
     }
     
     function random() private view returns (uint) {
-        return uint(keccak256(block.difficulty, now, players));
+        return uint(keccak256(block.difficulty, block.timestamp, players));
     }
     
     function pickWinner() public isManager() {
@@ -31,4 +31,4 @@ contract Lottery {
     function getPlayers() public view returns (address[]) {
         return players;
     }
- }
+}

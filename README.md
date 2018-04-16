@@ -16,10 +16,12 @@
 - dynamic array, int[]
 - mapping, mapping(address => string)
 - struct
- - ```struct Kitty {
-    address owner;
-    int: price;
-  }```
+```javascript
+struct Kitty {
+  address owner;
+  int: price;
+}
+```
 
 ## Function Types
 
