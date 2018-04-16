@@ -1,14 +1,17 @@
 import React from 'react';
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
+import { Link } from '../routes';
 
-export default (props) => (<Segment >
-  <Menu secondary>
-  <Menu.Item>
-    EthCampaign
-  </Menu.Item>
-  <Menu.Menu position='right'>
-    <Menu.Item>Campaigns</Menu.Item>
-    <Menu.Item>+</Menu.Item>
-  </Menu.Menu>
-</Menu>
-</Segment>);
+export default (props) => (
+  <Menu style={{ 'margin': '20px auto 10px' }}>
+    <Link route='/'>
+      <Menu.Item>
+        EthCampaign
+      </Menu.Item>
+    </Link>
+    <Menu.Menu position='right'>
+      <a href='https://github.com/amazingandyyy/ether-dev' target='_blank'>
+        <Menu.Item>Github</Menu.Item>
+      </a>
+    </Menu.Menu>
+</Menu>);
