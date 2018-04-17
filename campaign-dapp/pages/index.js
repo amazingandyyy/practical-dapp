@@ -14,7 +14,7 @@ export default class Index extends React.Component {
   renderCampaign() {
     const items = this.props.campaigns.map(address=>({
       header: address,
-      description: <a>View Campaign</a>,
+      description: <Link route={`/campaigns/${address}`}>View Campaign</Link>,
       fluid: true
     }))
     return <Card.Group items={items} />
@@ -22,7 +22,7 @@ export default class Index extends React.Component {
 
   render() {
     return <Layout>
-      <h3>Open Campaign</h3>
+      <h3>Open Campaigns</h3>
       <Link route='/campaigns/new'>
         <Button
           floated='right'

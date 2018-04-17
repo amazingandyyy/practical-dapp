@@ -7,7 +7,7 @@
     "test": "mocha --watch",
     "dev": "node server.js",
     "build:contract": "node ./contract/compile.js",
-    "deploy:contract": "node ./contract/deploy.js"
+    "deploy:contract": "npm run build:contract && node ./contract/deploy.js"
   },
   "author": "Amazingandyyy <amazingandyyy@gmail.com> (Andy Chen)",
   "license": "MIT",

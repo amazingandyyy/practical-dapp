@@ -9,9 +9,21 @@ export default (props) => (
         EthCampaign
       </Menu.Item>
     </Link>
+    <Link route='/'>
+      <Menu.Item>
+        Campaigns
+      </Menu.Item>
+    </Link>
     <Menu.Menu position='right'>
-      <a href='https://github.com/amazingandyyy/ether-dev' target='_blank'>
-        <Menu.Item>Github</Menu.Item>
-      </a>
+      <Link route='/campaigns/new'>
+        <Menu.Item>
+          Create
+        </Menu.Item>
+      </Link>
+      <Menu.Item>
+        <a href='https://github.com/amazingandyyy/ether-dev' target='_blank'>
+            Github
+        </a>
+      </Menu.Item>
     </Menu.Menu>
 </Menu>);

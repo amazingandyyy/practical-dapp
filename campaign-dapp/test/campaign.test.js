@@ -64,6 +64,10 @@ describe('Campaigns', () => {
   })
 
   it('allows a manager to make a payment request', async () => {
+    await campaign.methods.contribute().send({
+      from: accounts[1],
+      value: '200'
+    });
     await campaign.methods.createRequest('Say Hi', '100', accounts[2]).send({
       from: accounts[0],
       gas: '1000000'
