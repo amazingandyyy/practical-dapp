@@ -2,14 +2,16 @@ import React from 'react';
 
 import web3 from '../../contract/web3';
 import Layout from '../../components/Layout';
-import campaign from '../../contract/campaign';
-import { Card } from 'semantic-ui-react';
+import Campaign from '../../contract/campaign';
+import { Card, Grid, Segment, Button } from 'semantic-ui-react';
+import ContributeForm from './contribute';
+import { Link } from '../../routes';
 
-export default class CampsignDetails extends React.Component {
+export default class CampaignDetails extends React.Component {
   
   static async getInitialProps(props) {
     const address = props.query.address;
-    const _summary = await campaign(address).methods.getSummary().call();
+    const _summary = await Campaign(address).methods.getSummary().call();
     const _campaign = {
       minimumContributionInWei: _summary[0],
       balance: _summary[1],
@@ -17,7 +19,7 @@ export default class CampsignDetails extends React.Component {
       approversCount: _summary[3],
       manager: _summary[4]
     }
-    return {_campaign};
+    return {_campaign, address};
   }
 
   renderCards(){
@@ -61,8 +63,30 @@ export default class CampsignDetails extends React.Component {
 
   render() {
     return <Layout>
-      <h3>Campaign Details</h3>
-      {this.renderCards()}
+        <h3>Campaign Details</h3>
+        <Grid>
+          <Grid.Row stretched>
+            <Grid.Column width={10}>
+              {this.renderCards()}
+            </Grid.Column>
+            <Grid.Column width={6}>
+              <Segment>
+                <ContributeForm 
+                  address={this.props.address}
+                />
+              </Segment>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>
+            <Link route={`/campaigns/${this.props.address}/requests`}>
+              <a>
+                <Button primary>View Requests</Button>
+              </a>
+            </Link>
+            </Grid.Column>
+          </Grid.Row>
+      </Grid>
     </Layout>
   }
 }

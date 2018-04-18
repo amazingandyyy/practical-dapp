@@ -17,13 +17,14 @@ export default class New extends React.Component {
     const accounts = await web3.eth.getAccounts();
     if(accounts && accounts.length==0){
       this.setState({ loading:false, errorMessage: 'please unlock your metamask!' });
+      return;
     }
     try {
       await factory.methods.createCampaign(this.state.minimumContribution).send({ from: accounts[0] });
       this.setState({ loading:false, errorMessage: '' });
       Router.pushRoute('/');
     } catch(err) {
-      this.setState({ loading:false, minimumContribution:'', errorMessage: err.message.toString().split('\n')[0] });
+      this.setState({ loading:false, errorMessage: err.message.toString().split('\n')[0] });
     }
   }
   render() {
@@ -32,9 +33,10 @@ export default class New extends React.Component {
       <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
         <Form.Field>
           <label>Minimum Contribution</label>
-          <Input 
+          <Input
             label='wei' labelPosition='right'  
             value={this.state.minimumContribution}
+            disabled={this.state.loading}
             onChange={evt=>this.setState({minimumContribution: evt.target.value, errorMessage: '' })}
           />
         </Form.Field>
@@ -46,6 +48,7 @@ export default class New extends React.Component {
         <Button
           type='submit'
           primary
+          disabled={this.state.loading}
           loading={this.state.loading}
         >Create!</Button>
       </Form>

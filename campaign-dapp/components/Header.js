@@ -21,7 +21,7 @@ export default (props) => (
         </Menu.Item>
       </Link>
       <Menu.Item>
-        <a href='https://github.com/amazingandyyy/ether-dev' target='_blank'>
+        <a href='https://github.com/amazingandyyy/practical-dapp' target='_blank'>
             Github
         </a>
       </Menu.Item>
