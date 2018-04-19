@@ -10,7 +10,7 @@ import { Link } from '../../routes';
 export default class CampaignDetails extends React.Component {
   
   static async getInitialProps(props) {
-    const address = props.query.address;
+    const {address} = props.query;
     const _summary = await Campaign(address).methods.getSummary().call();
     const _campaign = {
       minimumContributionInWei: _summary[0],

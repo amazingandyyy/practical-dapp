@@ -14,9 +14,13 @@ export default class New extends React.Component {
     errorMessage: '',
     loading: false
   }
-  static getInitialProps(props) {
-    const address = props.query.address;
-    return { address };
+  static async getInitialProps(props) {
+    const {address} = props.query;
+    const _summary = await Campaign(address).methods.getSummary().call();
+    return { 
+      balance: web3.utils.fromWei(_summary[1], 'ether').slice(0,5),
+      address
+     };
   }
   onSubmit = async (evt) => {
     evt.preventDefault();
@@ -39,7 +43,7 @@ export default class New extends React.Component {
         gas: '1000000'
       });
       this.setState({ loading:false, errorMessage: '' });
-      Router.pushRoute(`/campaigns/${this.props.query.address}`);
+      Router.pushRoute(`/campaigns/${address}`);
     }catch(err){
       this.setState({ loading:false, errorMessage: err.message.toString().split('\n')[0] });
     }
@@ -58,8 +62,10 @@ export default class New extends React.Component {
         />
       </Form.Field>
       <Form.Field>
-        <label>Value (in ether)</label>
+        <label>Value (in ether) <small>maximum {this.props.balance} ether</small></label>
         <Input
+          type='number'
+          max={this.props.balance}
           required
           value={this.state.value}
           disabled={this.state.loading}
