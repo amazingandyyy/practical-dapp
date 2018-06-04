@@ -1,1 +1,1 @@
-module.mnemonic= process.env.mnemonic;
+exports.mnemonic= process.env.mnemonic;
